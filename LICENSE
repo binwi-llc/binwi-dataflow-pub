@@ -1,0 +1,71 @@
+PROPRIETARY COMMERCIAL LICENSE AGREEMENT
+
+IMPORTANT: PLEASE READ THIS LICENSE AGREEMENT CAREFULLY BEFORE DOWNLOADING,
+INSTALLING, OR USING THE ARTIFACTS FROM THIS REPOSITORY.
+
+This Commercial License Agreement (the "Agreement") is a legal agreement
+between Binwi LLC ("Licensor") and you, either an individual or a single
+entity ("Licensee"), for the software artifacts, compiled libraries,
+documentation, and associated materials hosted in this Maven repository
+(collectively, the "Software").
+
+1. Grant of License
+Subject to the terms of this Agreement and payment of any applicable license
+fees, Binwi LLC grants Licensee a non-exclusive, non-transferable, revocable,
+worldwide license to:
+* Download and cache the Software via Maven, Gradle, or other dependency
+  management tools for development purposes.
+* Link and bundle the compiled Software (.jar, .aar, etc.) into Licensee?s
+  own proprietary applications ("Licensee Applications").
+* Distribute, sublicense, and execute the Software only as an integrated,
+  inseparable component of the Licensee Applications, provided such applications
+  do not compete directly with the Software itself.
+
+2. Restrictions
+Except as expressly permitted in Section 1, Licensee shall not, and shall not
+allow any third party to:
+* Modify, adapt, alter, translate, or create derivative works of the Software.
+* Reverse engineer, decompile, disassemble, or otherwise attempt to derive
+  the source code of the Software (except to the extent applicable law
+  specifically prohibits this restriction).
+* Redistribute, rent, lease, lend, sell, or sublicense the Software as a
+  standalone library, SDK, or framework.
+* Remove, alter, or obscure any copyright notices, trademarks, or proprietary
+  legends contained in or on the Software.
+
+3. Fees and Audit
+* Commercial Use: Use of this Software in commercial production environments
+  is strictly conditioned upon the purchase of a valid Commercial License
+  subscription or one-time fee from Binwi LLC.
+* Audit Rights: Binwi LLC reserves the right, upon reasonable prior notice,
+  to audit Licensee?s use of the Software to ensure compliance with this Agreement.
+
+4. Ownership
+The Software is licensed, not sold. Binwi LLC retains all right, title, and
+interest in and to the Software, including all intellectual property rights
+therein. No implied licenses are granted under this Agreement.
+
+5. Disclaimer of Warranty
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL
+BINWI LLC OR ITS COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+6. Limitation of Liability
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, BINWI LLC SHALL NOT BE LIABLE FOR
+ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR
+ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY,
+OR ANY LOSS OF DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES.
+
+7. Termination
+This Agreement terminates automatically if Licensee fails to comply with any
+of its terms. Upon termination, Licensee must cease all use of the Software
+and remove all copies of the Software from its development environments,
+Maven caches, and build pipelines.
+
+--------------------------------------------------------------------------------
+Copyright (c) 2026 Binwi LLC. All rights reserved.
+--------------------------------------------------------------------------------
