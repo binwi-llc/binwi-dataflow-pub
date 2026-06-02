@@ -14,6 +14,15 @@ List<Map<String, Object>> users = db.table("users")
 
 ---
 
+## Documentation
+
+Detailed usage guides live in the [`docs/`](docs/) folder:
+
+- [Getting Started](docs/getting-started.md) — first query in five minutes
+- [Full documentation index](docs/README.md) — installation, dialects, joins, pagination, safety, API reference, and more
+
+---
+
 ## Features
 
 - Fluent builder for `SELECT` / `INSERT` / `UPDATE` / `DELETE` / `INCREMENT` / `DECREMENT`.
@@ -21,7 +30,7 @@ List<Map<String, Object>> users = db.table("users")
 - `LEFT` / `RIGHT` / `INNER` joins with a dedicated on-condition DSL (`leftJoin(..., on -> on.where(...).colEq(...))`).
 - Parenthesized predicate groups via `groupStart()` / `groupEnd()` and `orGroupStart()`.
 - `distinct()` on the SELECT.
-- Strict identifier validation by default: every table / column name must match `^[a-z][a-z0-9_]*$` ? anything else is rejected before reaching the database. Opt into mixed-case quoted identifiers by selecting a dialect (see below).
+- Strict identifier validation by default: every table / column name must match `^[a-z][a-z0-9_]*$` — anything else is rejected before reaching the database. Opt into mixed-case quoted identifiers by selecting a dialect (see below).
 - Pluggable `Dialect` strategy with built-in support for Postgres, MySQL, MariaDB, H2, SQL Server, and Oracle. Picking a dialect flips on identifier quoting (`"col"` / `` `col` `` / `[col]`), relaxes validation to `[A-Za-z_][A-Za-z0-9_]*`, and switches pagination syntax where the database demands it.
 - Every value flows through `NamedParameterJdbcTemplate` placeholders, including `LIMIT` and `OFFSET` (`:_limit`, `:_offset`). No string concatenation of user data into SQL.
 - Raw escape hatches (`selectRaw`, `whereRaw`, `havingRaw`, `joinRaw`, `orderByAscRaw`, `orderByDescRaw`) that reject `;`, `--`, `/*`, `*/` and require named-bind validation when binds are provided.
@@ -29,7 +38,7 @@ List<Map<String, Object>> users = db.table("users")
 - Typed result mapping: `get(MyPojo.class)`, `first(MyPojo.class)` and `paginate(perPage, page, MyPojo.class)` map snake_case columns to camelCase record components / bean properties via Spring's `DataClassRowMapper`. `RowMapper<T>` overloads are also available.
 - Streaming reads (`stream()` / `stream(Class)` / `stream(RowMapper)`) backed by a JDBC cursor for iterating large result sets without materialising them.
 - Built-in pagination (`paginate(perPage, page)`) returning a typed `Page<T>` with `items` / `total` / `page` / `perPage` / `totalPages` / `hasNext` / `hasPrevious`.
-- Typed exception hierarchy (`InvalidIdentifierException`, `InvalidArgumentException`, `InvalidBindException`, `InvalidStateException`, `UnsafeOperationException`) all extending `AppException` ? pattern-match the one you care about, catch `AppException` to handle them all.
+- Typed exception hierarchy (`InvalidIdentifierException`, `InvalidArgumentException`, `InvalidBindException`, `InvalidStateException`, `UnsafeOperationException`) all extending `AppException` — pattern-match the one you care about, catch `AppException` to handle them all.
 - Optional automatic `created_at` / `updated_at` columns via `withCreatedAt()` / `withUpdatedAt()`.
 - Spring Boot auto-configuration: drop the jar on the classpath, get a `DB` bean.
 
@@ -50,17 +59,17 @@ List<Map<String, Object>> users = db.table("users")
 <dependency>
     <groupId>com.binwi</groupId>
     <artifactId>binwi-dataflow</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-implementation 'com.binwi:binwi-dataflow:2.0.0'
+implementation 'com.binwi:binwi-dataflow:2.0.1'
 ```
 
-Spring JDBC and Spring Boot autoconfigure are declared as `provided` ? your application brings them in via `spring-boot-starter-jdbc` or `spring-boot-starter-data-jpa`.
+Spring JDBC and Spring Boot autoconfigure are declared as `provided` — your application brings them in via `spring-boot-starter-jdbc` or `spring-boot-starter-data-jpa`.
 
 ## Quick start
 
@@ -98,7 +107,7 @@ DB pg = new DB(jdbc, PostgresDialect.INSTANCE);      // quoted, case-sensitive
 
 DataFlow ships seven dialects under `com.binwi.dataflow.dialect`. Pick one to control
 identifier quoting, the allowed identifier shape, and pagination syntax. The default is
-`GenericDialect` ? fully backward compatible with pre-dialect code.
+`GenericDialect` — fully backward compatible with pre-dialect code.
 
 | Dialect | Quote | Identifier pattern | Pagination |
 |---|---|---|---|
@@ -138,7 +147,7 @@ db.table("Users")
 
 ### Schema case-sensitivity
 
-`GenericDialect` rejects anything that isn't lowercase snake_case ? the strictest, most
+`GenericDialect` rejects anything that isn't lowercase snake_case — the strictest, most
 portable shape. Picking any other dialect:
 
 - Relaxes validation to `[A-Za-z_][A-Za-z0-9_]*`, so camelCase / PascalCase identifiers
@@ -254,7 +263,7 @@ Long id = db.table("users")
     ));
 ```
 
-Use `insertWithoutId(...)` when the table has a composite or client-supplied primary key ? it skips the generated-key lookup and returns the affected row count:
+Use `insertWithoutId(...)` when the table has a composite or client-supplied primary key — it skips the generated-key lookup and returns the affected row count:
 
 ```java
 int rows = db.table("session_audit").insertWithoutId(Map.of(
@@ -286,7 +295,7 @@ int updated = db.table("users")
 
 ### Reading single rows
 
-`first()` returns an `Optional` that is empty when no row matches ? both the untyped `Map`-returning form and the typed overloads:
+`first()` returns an `Optional` that is empty when no row matches — both the untyped `Map`-returning form and the typed overloads:
 
 ```java
 Optional<Map<String, Object>> alice = db.table("users").where("name", "Alice").first();
@@ -329,7 +338,7 @@ for (Map<String, Object> row : page) {  // Page<T> implements Iterable<T>
 
 ### Typed result mapping
 
-Pass a record or POJO class to `get`, `first`, or `paginate` to skip the `Map<String, Object>` step. Spring's `DataClassRowMapper` handles snake_case ? camelCase automatically.
+Pass a record or POJO class to `get`, `first`, or `paginate` to skip the `Map<String, Object>` step. Spring's `DataClassRowMapper` handles snake_case → camelCase automatically.
 
 ```java
 public record User(Long id, String name, String email, Boolean active,
@@ -351,7 +360,7 @@ List<String> emails = db.table("users")
 
 ### Streaming large result sets
 
-`stream()`, `stream(Class<T>)` and `stream(RowMapper<T>)` return a `java.util.stream.Stream` backed by a live JDBC cursor ? useful for iterating millions of rows without loading them into a `List`. The caller **must close** the stream (use try-with-resources):
+`stream()`, `stream(Class<T>)` and `stream(RowMapper<T>)` return a `java.util.stream.Stream` backed by a live JDBC cursor — useful for iterating millions of rows without loading them into a `List`. The caller **must close** the stream (use try-with-resources):
 
 ```java
 try (Stream<User> users = db.table("users")
@@ -387,7 +396,7 @@ All raw helpers (`selectRaw`, `whereRaw`, `havingRaw`, `joinRaw`, `orderByAscRaw
 ## Safety guarantees
 
 - Identifier validation. Every table / column / alias passed to the public API is checked against `^[a-z][a-z0-9_]*$` (with a single optional dot for qualified columns). SQL injection through identifiers is structurally impossible.
-- Parameterized values. Values are bound via Spring's `NamedParameterJdbcTemplate` ? never interpolated into the SQL string.
+- Parameterized values. Values are bound via Spring's `NamedParameterJdbcTemplate` — never interpolated into the SQL string.
 - Refused destructive operations:
   - `delete()` without `WHERE` throws `UnsafeOperationException`.
   - `update()` without `WHERE` throws `UnsafeOperationException`.
@@ -415,7 +424,7 @@ All exceptions extend `com.binwi.dataflow.exception.AppException`:
 try {
     db.table("users").update(Map.of("score", 0));
 } catch (UnsafeOperationException e) {
-    // refusing UPDATE without a WHERE clause ? recover or log
+    // refusing UPDATE without a WHERE clause — recover or log
 } catch (AppException e) {
     // any other DataFlow failure
 }
@@ -428,10 +437,10 @@ try {
   `ORDER BY` whenever `take()` / `skip()` is set; SQLite and pre-12c Oracle are not
   supported out of the box (use `unsafeQuery` if you must).
 - Dialect-specific SQL extensions like Postgres `ILIKE` or `NULLS FIRST/LAST` are still
-  caller-responsibility ? DataFlow does not rewrite them per dialect. Reach for the raw
+  caller-responsibility — DataFlow does not rewrite them per dialect. Reach for the raw
   escape hatches (`whereRaw`, `havingRaw`, `orderByAscRaw`) when you need them.
 - `DB` is mutable per-instance. The Spring Boot auto-config registers it as `@Scope("prototype")` to give each injection point its own builder; if you wire it manually as a singleton, do not share it across threads.
-- No transaction helper baked in ? use Spring's `@Transactional` / `TransactionTemplate` around `DB` calls as usual.
+- No transaction helper baked in — use Spring's `@Transactional` / `TransactionTemplate` around `DB` calls as usual.
 
 ## Configuration
 
@@ -442,7 +451,7 @@ The Spring Boot auto-configuration activates whenever:
 3. No user-defined `DB` bean exists.
 
 It also exposes a `Dialect` bean driven by `binwi.dataflow.dialect` (defaults to
-`generic`). Override either bean to customise wiring ? for example to point at a
+`generic`). Override either bean to customise wiring — for example to point at a
 non-primary `NamedParameterJdbcTemplate` in a multi-datasource setup:
 
 ```java
