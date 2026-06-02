@@ -6,7 +6,7 @@ DataFlow supports INSERT, UPDATE, DELETE, and atomic increment/decrement operati
 
 ### Single row with generated key
 
-Use when the table has an auto-generated primary key and you need the new `id`:
+Use when the table has an auto-generated primary key and you need the new value back. The default key column is `id`; override with `withGeneratedKey(...)` when your schema uses a different name:
 
 ```java
 Long id = db.table("users")
@@ -15,9 +15,11 @@ Long id = db.table("users")
         "email", "alice@example.com",
         "active", true
     ));
-```
 
-DataFlow expects the generated key column to be named `id`. If the driver returns keys under a different name, retrieval may fail with `InvalidStateException`.
+Long orderId = db.table("orders")
+    .withGeneratedKey("order_id")
+    .insert(Map.of("customer_name", "Acme Corp"));
+```
 
 ### Single row without generated key
 

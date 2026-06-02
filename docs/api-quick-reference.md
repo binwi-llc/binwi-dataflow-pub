@@ -78,6 +78,8 @@ Complete method index for `com.binwi.dataflow.DB`. All methods return `DB` (flue
 |--------|-------------|
 | `withCreatedAt()` | Auto-set `created_at` on insert |
 | `withUpdatedAt()` | Auto-set `updated_at` on insert/update/increment/decrement |
+| `withGeneratedKey(col)` | Generated-key column for `insert()` (default `id`) |
+| `toSql()` | Preview SELECT SQL + binds (`SqlAndParams`), no execution |
 
 ## Read execution
 

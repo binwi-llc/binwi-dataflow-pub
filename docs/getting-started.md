@@ -21,14 +21,14 @@ Your application must already have a `DataSource` and `NamedParameterJdbcTemplat
 <dependency>
     <groupId>com.binwi</groupId>
     <artifactId>binwi-dataflow</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-implementation 'com.binwi:binwi-dataflow:2.0.0'
+implementation 'com.binwi:binwi-dataflow:2.0.1'
 ```
 
 Spring JDBC and Spring Boot autoconfigure are `provided` scope — your app supplies them via the starter you already use.

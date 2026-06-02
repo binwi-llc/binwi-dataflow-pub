@@ -25,7 +25,7 @@ Supported databases (with matching dialect):
 <dependency>
     <groupId>com.binwi</groupId>
     <artifactId>binwi-dataflow</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ Ensure your application also depends on Spring JDBC:
 ## Gradle
 
 ```groovy
-implementation 'com.binwi:binwi-dataflow:2.0.0'
+implementation 'com.binwi:binwi-dataflow:2.0.1'
 implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 ```
 

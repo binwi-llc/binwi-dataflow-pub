@@ -269,6 +269,23 @@ get() / first() / count() / stream()  →  builds SQL + executes via NamedParame
 
 Each `table(...)` call starts a completely new query. Reusing the same `DB` instance is safe as long as you always begin with `table()`.
 
+## SQL preview
+
+Inspect the SELECT SQL and bind map without executing:
+
+```java
+SqlAndParams preview = db.table("users")
+    .where("active", true)
+    .orderByAsc("id")
+    .take(10)
+    .toSql();
+
+preview.sql();    // SELECT * FROM users WHERE active = :active_1 ORDER BY id ASC LIMIT :_limit
+preview.params(); // {active_1=true, _limit=10}
+```
+
+`toSql()` does not hit the database and does not mutate the builder's internal bind map. Pagination placeholders (`_limit`, `_offset`) appear in the preview when `take()` / `skip()` are set.
+
 ## See also
 
 - [Joins](joins.md) — multi-table queries
